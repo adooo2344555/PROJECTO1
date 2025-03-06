@@ -146,7 +146,7 @@ document.getElementById('registerForm')?.addEventListener('submit', function (ev
 function actualizarBotonesAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
-    const linkLogin = document.querySelector('a[href="login.html"]');
+    const linkLogin = document.getElementById('loginLink');
 
     if (usuarioAutenticado === 'true') {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'block'; // Mostrar botón de cerrar sesión
