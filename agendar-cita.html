@@ -45,53 +45,52 @@
             resize: none;
         }
 
-
         /* Estilos para el modal de reprogramación */
-#reprogramarCitaModal .modal-content {
-    border-radius: 10px;
-    border: none;
-}
+        #reprogramarCitaModal .modal-content {
+            border-radius: 10px;
+            border: none;
+        }
 
-#reprogramarCitaModal .modal-header {
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px 10px 0 0;
-}
+        #reprogramarCitaModal .modal-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
 
-#reprogramarCitaModal .modal-title {
-    font-weight: bold;
-}
+        #reprogramarCitaModal .modal-title {
+            font-weight: bold;
+        }
 
-#reprogramarCitaModal .btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-}
+        #reprogramarCitaModal .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
 
-#reprogramarCitaModal .btn-primary:hover {
-    background-color: #0056b3;
-}
+        #reprogramarCitaModal .btn-primary:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script>
-          // Verificar autenticación al cargar la página
-          window.addEventListener('load', function () {
-              const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
-              if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-                  alert('Debes iniciar sesión para agendar una cita.');
-                  window.location.href = 'login.html';
-              }
-          }); 
-      </script>
+        // Verificar autenticación al cargar la página
+        window.addEventListener('load', function () {
+            const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
+            if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
+                alert('Debes iniciar sesión para agendar una cita.');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="container my-5">
         <h2 class="text-center mb-4">Agendar Cita</h2>
         <form id="appointmentForm" class="row g-3">
             <!-- Selección de Doctor -->
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <label for="doctor" class="form-label">Seleccione el Doctor:</label>
                 <select class="form-select" id="doctor" required>
                     <option value="">Selecciona...</option>
@@ -100,7 +99,7 @@
                 </select>
             </div>
             <!-- Tipo de consulta -->
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <label for="consultationType" class="form-label">Tipo de Consulta:</label>
                 <select class="form-select" id="consultationType" required>
                     <option value="">Selecciona...</option>
@@ -110,34 +109,33 @@
                 </select>
             </div>
             <!-- Fecha deseada -->
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <label for="appointmentDate" class="form-label">Fecha Deseada:</label>
                 <input type="date" class="form-control" id="appointmentDate" required>
             </div>
             <!-- Hora preferida -->
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <label for="appointmentTime" class="form-label">Hora Preferida:</label>
                 <input type="time" class="form-control" id="appointmentTime" required>
             </div>
             <!-- Comentarios adicionales -->
-            <div class="col-12">
+            <div class="col-12 mb-3">
                 <label for="comments" class="form-label">Comentarios Adicionales:</label>
                 <textarea class="form-control" id="comments" rows="4"></textarea>
             </div>
             <!-- Botón de enviar -->
-            <div class="col-12">
+            <div class="col-12 mb-3">
                 <button type="submit" class="btn btn-primary">Agendar Cita</button>
             </div>
-               <!-- Botón para abrir el modal de reprogramación -->
+            <!-- Botón para abrir el modal de reprogramación -->
             <div class="col-12 mt-3">
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reprogramarCitaModal">
-                     Reprogramar Cita
+                    Reprogramar Cita
                 </button>
+            </div>
         </form>
     </div>
 
-
-    
 <!-- Modal de Reprogramación de Cita -->
 <div class="modal fade" id="reprogramarCitaModal" tabindex="-1" aria-labelledby="reprogramarCitaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
