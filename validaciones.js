@@ -204,10 +204,10 @@ document.getElementById('loginForm')?.addEventListener('submit', function (event
 });
 
 // Función para verificar autenticación
-function verificarAutenticacion(mensaje) {
+function verificarAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-        alert(mensaje);
+        alert('Debes iniciar sesión para acceder a esta página.');
         window.location.href = 'login.html';
         return false;
     }
