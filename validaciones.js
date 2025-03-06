@@ -207,23 +207,23 @@ document.getElementById('loginForm')?.addEventListener('submit', function (event
 function verificarAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-        alert('Debes iniciar sesión para acceder a esta página.');
         window.location.href = 'login.html';
-        return false; // Asegúrate de devolver false
+        return false;
     }
     return true;
 }
 
-// Verificar autenticación al cargar la página de Agendar Cita
+// Verificar autenticación al cargar la página de "Agendar Cita" y "Contacto"
 window.addEventListener('load', function () {
-      // Verificar autenticación al cargar la página
-      window.addEventListener('load', function () {
-        const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
-        if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-            alert('Debes iniciar sesión para agendar una cita.');
-            window.location.href = 'login.html';
+    if (window.location.pathname.includes('agendar-cita.html')) {
+        if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
+            return;
         }
-    });
+    } else if (window.location.pathname.includes('contacto.html')) {
+        if (!verificarAutenticacion('Debes iniciar sesión para acceder al formulario de contacto.')) {
+            return;
+        }
+    }
 });
 
 // Función para manejar el formulario de agendar cita
@@ -231,8 +231,8 @@ document.getElementById('appointmentForm')?.addEventListener('submit', function 
     event.preventDefault();
 
     // Verificar autenticación antes de agendar la cita
-    if (!verificarAutenticacion()) {
-        return; // Detener el envío del formulario si la autenticación falla
+    if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
+        return;
     }
 
     // Obtener el nombre del usuario autenticado
