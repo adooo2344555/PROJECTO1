@@ -215,15 +215,14 @@ function verificarAutenticacion() {
 
 // Verificar autenticación al cargar la página de "Agendar Cita" y "Contacto"
 window.addEventListener('load', function () {
-    if (window.location.pathname.includes('agendar-cita.html')) {
-        if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
-            return;
+      // Verificar autenticación al cargar la página
+      window.addEventListener('load', function () {
+        const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
+        if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
+            alert('Debes iniciar sesión para agendar una cita.');
+            window.location.href = 'login.html';
         }
-    } else if (window.location.pathname.includes('contacto.html')) {
-        if (!verificarAutenticacion('Debes iniciar sesión para acceder al formulario de contacto.')) {
-            return;
-        }
-    }
+    });
 });
 
 // Función para manejar el formulario de agendar cita
