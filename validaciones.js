@@ -290,12 +290,14 @@ document.getElementById('reprogramarCitaForm')?.addEventListener('submit', funct
     }
 
     // Obtener los valores del formulario
+    const reprogramDoctor = document.getElementById('reprogramDoctor').value.trim();
+    const reprogramConsultationType = document.getElementById('reprogramConsultationType').value.trim();
     const newAppointmentDate = document.getElementById('newAppointmentDate').value.trim();
     const newAppointmentTime = document.getElementById('newAppointmentTime').value.trim();
     const reprogramComments = document.getElementById('reprogramComments').value.trim();
 
     // Validar que los campos no estén vacíos
-    if (!newAppointmentDate || !newAppointmentTime) {
+    if (!reprogramDoctor || !reprogramConsultationType || !newAppointmentDate || !newAppointmentTime) {
         alert('Por favor, completa todos los campos obligatorios.');
         return;
     }
@@ -318,6 +320,8 @@ document.getElementById('reprogramarCitaForm')?.addEventListener('submit', funct
     // Actualizar los datos de la cita
     const nuevaCita = {
         ...citaActual, // Mantener los datos anteriores
+        doctor: reprogramDoctor, // Actualizar el doctor
+        consultationType: reprogramConsultationType, // Actualizar el tipo de consulta
         appointmentDate: newAppointmentDate, // Actualizar la fecha
         appointmentTime: newAppointmentTime, // Actualizar la hora
         comments: reprogramComments // Actualizar los comentarios
