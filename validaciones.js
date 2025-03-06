@@ -1,3 +1,22 @@
+// Almacenamiento de citas agendadas
+let citasAgendadas = JSON.parse(localStorage.getItem('citasAgendadas')) || [];
+
+// Función para verificar la disponibilidad del doctor
+function verificarDisponibilidad(doctor, fecha, hora) {
+    // Convertir la fecha y hora a un formato comparable
+    const fechaHoraCita = new Date(`${fecha}T${hora}:00`);
+
+    // Verificar si el doctor ya tiene una cita en ese horario
+    const citaExistente = citasAgendadas.find(cita => {
+        const fechaHoraExistente = new Date(`${cita.appointmentDate}T${cita.appointmentTime}:00`);
+        return cita.doctor === doctor && fechaHoraExistente.getTime() === fechaHoraCita.getTime();
+    });
+
+    return !citaExistente; // Devuelve true si el doctor está disponible
+}
+
+
+
 // Almacenamiento de usuarios registrados
 let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
