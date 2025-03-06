@@ -207,7 +207,7 @@ document.getElementById('loginForm')?.addEventListener('submit', function (event
 function verificarAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-        alert('Debes iniciar sesión para acceder a esta página.');
+        alert('HOLAAAA.');
         window.location.href = 'login.html';
         return false;
     }
